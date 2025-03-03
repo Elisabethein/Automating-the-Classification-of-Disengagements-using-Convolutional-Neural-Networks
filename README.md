@@ -1,6 +1,8 @@
 # Automating-the-Classification-of-Disengagements-using-Convolutional-Neural-Networks
 This is the official repository for the Batchlor's Thesis of Elisabet Hein, titled "Automating the Classification of Disengagements using Convolutional Neural Networks".
 
+The repository contains 8 binary classification models and data preprocessing script files.
+
 The following files can be found here:
 
 The script **"combining_topics.ipynb"** was developed to preprocess and unify key control and localization topics from multiple test drive datasets. It merges the selected topics into a single CSV file per test drive, aligning data based on timestamps while handling missing values through forward and backward filling to ensure continuity. Additionally, it filters out irrelevant columns containing metadata such as headers, component types, and frame identifiers, simplifying the dataset without compromising essential control and localization information. This streamlined dataset serves as a foundation for further analysis and model development.
