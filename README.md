@@ -34,3 +34,20 @@ Additionally, several preprocessing scripts were developed:
 
 5. The "**binary_models_training.ipynb"** script handles the full pipeline for training binary classification models for disengagement prediction. It standardizes disengagement event data, converts categorical features to numerical values, normalizes numerical data, and applies data augmentation if needed. The dataset is then split into training and validation sets.
 For model training, separate 1D CNN-based binary classifiers are built for each disengagement class, using Adam optimization, binary cross-entropy loss, and EarlyStopping to enhance performance and prevent overfitting. After training, models are validated, and SHAP analysis is used to interpret feature importance, ensuring transparency in predictions.
+
+
+## Sample files
+
+The following files are samples derived from the outputs of the previously mentioned processing scripts. Due to the size of the full datasets, only excerpts are provided here to give an example of what the full data looks like. These samples maintain the same structure as the larger files, with the only difference being the specific data they contain. They serve to illustrate the output at different stages of the preprocessing pipeline.
+
+1. **'2023-10-16-10-14-49_tiksoja_ride_02_sfa_combined_topics.csv'**
+This is a processed excerpt of a ride dataset where all key control and localization topics from the raw ride data have been merged. It is the result of running the "combining_topics.ipynb", "processing_for_waypoints_and_objects.ipynb", and "expanding_with_objects_waypoints.ipynb" scripts. The file contains a snapshot of the first 10 rows. This data serves as the base for further preprocessing.
+
+2. **'2023-10-16-10-14-49_tiksoja_ride_02_sfa_expanded.csv'**
+This expanded version of the previous file includes additional columns that capture disengagement data. The three new columns - ‘disengagement’, ‘disengagement_reason’, and ‘disengagement_type’ - are derived from the "adding_disengagement_types.ipynb" script. These columns allow for the identification and classification of disengagement events and provide more context to the dataset by linking control-related data with the reasons for disengagement.
+
+3. **'2023-10-16-10-14-49_tiksoja_ride_02_sfa_disengagement_1.csv'**
+This file extracts a 5-second window of data immediately before a disengagement event. The sample represents a focused subset of the larger ride data, helping to build targeted training data for model predictions.
+
+4. **'sample_X_train.csv'** and **'sample_y_train.csv'**
+These files represent a normalized and standardized sample of the input and corresponding labels for the binary classification models. 'sample_X_train.csv' contains the feature data (control and localization data over 1304 timestamps with 484 features), while 'sample_y_train.csv' holds the corresponding labels (either 1 for the specific disengagement class or 0 for others). These samples provide a clean input-output pair for model training, offering an example of how the preprocessed data is shaped, standardized, and ready for machine learning models.
